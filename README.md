@@ -1,7 +1,7 @@
 Self Driving Car Nano Degree Final Project
 -
 
-[Architecture]: ./../imgs/system_architecture_diagram.png "System Architecture Design"
+[Architecture]: ./imgs/system_architecture_diagram.png "System Architecture Design"
 
 
 Team: Lost in translation
