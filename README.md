@@ -1,7 +1,6 @@
 Self Driving Car Nano Degree Final Project
 -
 
-[Architecture]: ./imgs/system_architecture_diagram.png "System Architecture Design"
 
 
 Team: Lost in translation
@@ -132,4 +131,4 @@ roslaunch launch/site.launch
 This project is to write ROS nodes to implement core functionality of the autonomous vehicle system, including traffic light detection,
 control, and waypoint following! Following is a system architecture diagram showing the ROS nodes and topics used in the project.
 
-![Architecture][System Architecture Design]
+![Architecture](./imgs/system_architecture_diagram.png)
