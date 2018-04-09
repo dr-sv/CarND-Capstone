@@ -1,3 +1,5 @@
+Test
+==
 
 Team: Lost in translation
 
@@ -56,6 +58,18 @@ docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capst
 ```bash
 catkin_make clean && catkin_make && source devel/setup.bash && roslaunch launch/styx.launch
 ```
+
+Note: If you are using Docker, you need to open more terminal in docker container, try bellow in your host machine to open a new terminal window.
+```bash
+docker run -it capstone
+```
+
+After opening a new terminal window, run source to get setup
+```bash
+devel/setup.bash
+````
+
+
 
 6. Run the simulator on your computer
 

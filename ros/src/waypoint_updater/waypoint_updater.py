@@ -75,8 +75,9 @@ class WaypointUpdater(object):
         last_wp = next_wp + LOOKAHEAD_WPS
         wps = self.wps[next_wp : last_wp]
         wps_base = self.wps_base[next_wp : last_wp]
-        # inc_vel = (self.wps_base[next_wp-1].twist.twist.linear.x - curr_vel)/float(last_wp - next_wp)
-        inc_vel = 1.0
+
+        inc_vel = (self.wps_base[next_wp-1].twist.twist.linear.x - curr_vel)/float(last_wp - next_wp)
+        #inc_vel = 1.0
         for i, w in enumerate(wps):
             w.twist.twist.linear.x = curr_vel + inc_vel * (i+1)
             w.twist.twist.linear.x = min(w.twist.twist.linear.x, wps_base[i].twist.twist.linear.x)

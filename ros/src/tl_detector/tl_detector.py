@@ -19,7 +19,7 @@ STATE_COUNT_THRESHOLD = 3
 
 class TLDetector(object):
     def __init__(self):
-        rospy.init_node('tl_detector')
+        rospy.init_node('tl_detector', log_level=rospy.INFO)
 
         self.pose = None
         self.waypoints = None
@@ -30,18 +30,21 @@ class TLDetector(object):
         sub1 = rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         sub2 = rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
 
-        '''
-        /vehicle/traffic_lights provides you with the location of the traffic light in 3D map space and
-        helps you acquire an accurate ground truth data source for the traffic light
-        classifier by sending the current color state of all traffic lights in the
-        simulator. When testing on the vehicle, the color state will not be available. You'll need to
-        rely on the position of the light and the camera image to predict it.
-        '''
         # Debugging subscribers
-        sub2 = rospy.Subscriber('/image_raw', Image, self.capture_image_cb)
-        # sub3 = rospy.Subscriber('/vehicle/traffic_lights', TrafficLightArray, self.traffic_cb)
+        sub3 = rospy.Subscriber('/image_raw', Image, self.capture_image_cb)
 
-        sub4 = rospy.Subscriber('/image_color', Image, self.image_cb)
+
+        '''
+        In order to help you acquire an accurate ground truth data source for the traffic light classifier, the Udacity
+         simulator publishes the current color state of all traffic lights in the simulator to the /vehicle/traffic_lights 
+         topic in addition to the light location. This state can be used to generate classified images or subbed into 
+         your solution to help you work on another single component of the node. The state component of the topic 
+         won't be available when running your solution in real life so don't rely on it in the final submission. 
+         However, you can still reference this topic in real life to get the 3D world position of the traffic light.
+        '''
+        # sub4 = rospy.Subscriber('/vehicle/traffic_lights', TrafficLightArray, self.traffic_cb)
+
+        sub5 = rospy.Subscriber('/image_color', Image, self.image_cb)
 
 
         config_string = rospy.get_param("/traffic_light_config")
