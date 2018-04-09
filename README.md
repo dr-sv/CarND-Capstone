@@ -1,5 +1,8 @@
-Test
-==
+Self Driving Car Nano Degree Final Project
+-
+
+[Architecture]: ./../imgs/system_architecture_diagram.png "System Architecture Design"
+
 
 Team: Lost in translation
 
@@ -12,6 +15,8 @@ Team: Lost in translation
 |           | Huaping Gu -8          | humphrey.gu@gmail.com       | @guhuaping       |
 
 ----
+
+
 This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car. For more information about the project, see the project introduction [here](https://classroom.udacity.com/nanodegrees/nd013/parts/6047fe34-d93c-4f50-8336-b70ef10cb4b2/modules/e1a23b06-329a-4684-a717-ad476f0d8dff/lessons/462c933d-9f24-42d3-8bdc-a08a5fc866e4/concepts/5ab4b122-83e6-436d-850f-9f4d26627fd9).
 
 Please use **one** of the two installation options, either native **or** docker installation.
@@ -44,12 +49,12 @@ Please use **one** of the two installation options, either native **or** docker 
 
 2. Download and install simulator follow by the link [System Integration v1.3](https://github.com/udacity/CarND-Capstone/releases/tag/v1.3)
 
-3. Build the docker container
+3. Build the docker container on your host OS
 ```bash
 docker build . -t capstone
 ```
 
-4. Run the docker container
+4. Run the docker container from your host OS
 ```bash
 docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capstone
 ```
@@ -59,14 +64,14 @@ docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capst
 catkin_make clean && catkin_make && source devel/setup.bash && roslaunch launch/styx.launch
 ```
 
-Note: If you are using Docker, you need to open more terminal in docker container, try bellow in your host machine to open a new terminal window.
+Note: If you are using Docker and you want to open more terminal in docker container, try bellow in your host machine to open a new terminal window.
 ```bash
 docker run -it capstone
 ```
 
-After opening a new terminal window, run source to get setup
+After opening a new terminal window, make sure you run **source** to get setup
 ```bash
-devel/setup.bash
+source devel/setup.bash
 ````
 
 
@@ -121,3 +126,10 @@ cd CarND-Capstone/ros
 roslaunch launch/site.launch
 ```
 5. Confirm that traffic light detection works on real life images
+
+## Project System Architecture Design
+
+This project is to write ROS nodes to implement core functionality of the autonomous vehicle system, including traffic light detection,
+control, and waypoint following! Following is a system architecture diagram showing the ROS nodes and topics used in the project.
+
+![Architecture][System Architecture Design]
