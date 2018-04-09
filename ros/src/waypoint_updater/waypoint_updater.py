@@ -37,15 +37,20 @@ class WaypointUpdater(object):
         rospy.init_node('waypoint_updater')
 
         rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
-        rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
 
-        # TODO: Add a subscriber for /traffic_waypoint and /obstacle_waypoint below
+        # The /base_waypoints topic publishes a list of all waypoints for the track, so this list includes waypoints
+        # both before and after the vehicle (note that the publisher for /base_waypoints publishes only once).
+        rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
 
         rospy.Subscriber('/traffic_waypoint', Int32, self.traffic_cb)
 
+        # the list published to /final_waypoints should include just a fixed number of waypoints currently ahead of the vehicle
+        # The first waypoint in the list published to /final_waypoints should be the first waypoint that is currently ahead of the car.
+
+        # The total number of waypoints ahead of the vehicle that should be included in the /final_waypoints list is provided by
+        # the LOOKAHEAD_WPS variable in waypoint_updater.py.
         self.final_waypoints_pub = rospy.Publisher('final_waypoints', Lane, queue_size=1)
 
-        # TODO: Add other member variables you need below
         self.pose = None
         self.wps = None
         self.wps_base = None

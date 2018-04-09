@@ -63,7 +63,7 @@ docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capst
 catkin_make clean && catkin_make && source devel/setup.bash && roslaunch launch/styx.launch
 ```
 
-Note: If you are using Docker and you want to open more terminal in docker container, try bellow in your host machine to open a new terminal window.
+Note: If you are using Docker and you want to open more terminal in docker container (e.g. want to check all the topics, 'rostopic list', try bellow in your host machine to open a new terminal window.
 ```bash
 docker run -it capstone
 ```
